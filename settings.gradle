@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='Weather-68DCHT21.v2'

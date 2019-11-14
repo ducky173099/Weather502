@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bacground"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edittextSearch"
+            android:hint="Thành phố, phường"
+            android:layout_width="220dp"
+
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_marginLeft="10dp"
+            android:id="@+id/buttonTimKiem"
+            android:text="OK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:text="Tên thành phố: Hà Nội"
+        android:textSize="20dp"
+        android:id="@+id/textviewTenThanhPho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:text="Quốc gia: Việt Nam"
+        android:textSize="20dp"
+        android:id="@+id/textviewQuocGia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/imageviewTrangThai"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/textviewNhietDo"
+        android:layout_gravity="center"
+        android:textColor="#f20"
+        android:text="Nhiệt độ"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/textviewTrangThai"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:text="Trạng Thái"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
+        android:text="Ngày giờ cập nhật"
+        android:id="@+id/textviewNgayThang"
+        android:textSize="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:weightSum="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_weight="2.2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/textviewAir"
+                    android:textSize="12dp"
+                    android:text="Chất lượng không khí"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_below="@+id/textviewAir"
+                    android:id="@+id/imageCamXuc"
+                    android:src="@drawable/face_green"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"/>
+
+                <TextView
+                    android:id="@+id/textviewStatusAir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textviewAir"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageCamXuc"
+                    android:lines="2"
+                    android:text="Mức Độ: Tốt" />
+
+                <TextView
+                    android:id="@+id/textviewValueAIR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageCamXuc"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="20 US AQI"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1.8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:id="@+id/textviewUV"
+                    android:text="Chỉ số tia UV"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/imageSun"
+                    android:src="@drawable/sunny"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@id/textviewUV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="13dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/textviewValueUV"
+                    android:layout_below="@id/imageSun"
+                    android:text="Chỉ số UV của 5 trên 10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textviewSatusUV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textviewValueUV"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:text="Mức độ:Trung bình" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="3"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/custom_backgroud"
+            android:layout_width="0dp"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/drop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Độ Ẩm"
+                android:textSize="16dp"
+                android:id="@+id/textviewDoAm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/custom_backgroud"
+            android:layout_width="0dp"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/clouds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Mây"
+                android:textSize="16dp"
+                android:id="@+id/textviewMay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@drawable/custom_backgroud"
+            android:layout_width="0dp"
+            android:layout_margin="3dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Gió"
+                android:textSize="16dp"
+                android:id="@+id/textviewGio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/buttonThayDoiNgay"
+        android:layout_marginTop="25dp"
+        android:text="Các ngày tiếp theo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

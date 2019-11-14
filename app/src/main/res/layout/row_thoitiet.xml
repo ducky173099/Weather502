@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textviewTieuDe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textviewNgayThangBaoThoiTiet"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="Ngày Tháng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textviewTrangThaiDuBaoThoiTiet"
+            android:text="Trạng Thái"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:weightSum="3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imageviewTrangThaiDuBaoThoiTiet"
+                android:layout_weight="1"
+                android:src="@drawable/cloud"
+                android:layout_width="0dp"
+                android:layout_height="100dp"/>
+
+            <TextView
+                android:id="@+id/textviewMaxtemp"
+                android:text="Nhiệt độ cao nhất"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/textviewMintemp"
+                android:text="Nhiệt độ thấp nhất"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
