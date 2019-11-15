@@ -5,26 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bgweather"
     tools:context=".ThoiTietActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarDuBaoThoiTiet"
         android:layout_width="match_parent"
+        android:background="#0694CC"
+        app:titleTextColor="#06577C"
+        app:title="Dự báo thời tiết 5 ngày"
         android:layout_height="?attr/actionBarSize"/>
-
-    <TextView
-        android:id="@+id/textviewCity"
-        android:layout_marginLeft="5dp"
-        android:text="Tên thành phố"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="#315cb9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ListView
-        android:id="@+id/listviewDuBaoThoiTiet"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textviewCity"
+            android:layout_marginLeft="5dp"
+            android:text="Tên thành phố"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="#06577C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ListView
+            android:id="@+id/listviewDuBaoThoiTiet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 
 </LinearLayout>

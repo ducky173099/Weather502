@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
     android:background="@drawable/bacground"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -17,26 +20,35 @@
             android:id="@+id/edittextSearch"
             android:hint="Thành phố, phường"
             android:layout_width="220dp"
-
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
             android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:background="@drawable/custom_radius"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/buttonTimKiem"
+                android:text="OK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
-        <Button
-            android:layout_marginLeft="10dp"
-            android:id="@+id/buttonTimKiem"
-            android:text="OK"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <TextView
         android:layout_marginTop="2dp"
         android:text="Tên thành phố: Hà Nội"
         android:textSize="20dp"
+        android:textColor="#384E7D"
         android:id="@+id/textviewTenThanhPho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="#384E7D"
         android:layout_marginTop="2dp"
         android:text="Quốc gia: Việt Nam"
         android:textSize="20dp"
@@ -254,6 +266,7 @@
 
 
     <Button
+        android:background="@drawable/btn_more_three"
         android:id="@+id/buttonThayDoiNgay"
         android:layout_marginTop="25dp"
         android:text="Các ngày tiếp theo"

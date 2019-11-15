@@ -25,12 +25,12 @@ public class ThoiTietAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return arrayList.size();
-    }
+    } // get số lượng trong mảng
 
     @Override
     public Object getItem(int position) {
         return arrayList.get(position);
-    }
+    }// get tường phần tử trogn mảng
 
     @Override
     public long getItemId(int position) {
@@ -39,8 +39,9 @@ public class ThoiTietAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // tạo LayoutInflater : chuyển layout file(Xml) thành View(Java code) trong Android
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.row_thoitiet, null);
+        convertView = layoutInflater.inflate(R.layout.row_thoitiet, null); // truyền vào layout row_thoitiet
 
         TextView txtNgayThang = convertView.findViewById(R.id.textviewNgayThangBaoThoiTiet);
         TextView txtTrangThai = convertView.findViewById(R.id.textviewTrangThaiDuBaoThoiTiet);
@@ -49,6 +50,7 @@ public class ThoiTietAdapter extends BaseAdapter {
         TextView txtTieuDe = convertView.findViewById(R.id.textviewTieuDe);
         ImageView imgTrangThai = convertView.findViewById(R.id.imageviewTrangThaiDuBaoThoiTiet);
 
+        // gọi lại class Thoitiet để lấy từng giá trị
         Thoitiet thoiTiet = arrayList.get(position);
         String start = "01:00";
         String end = "22:00";

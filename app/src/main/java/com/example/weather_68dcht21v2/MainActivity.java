@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String city = edtSearch.getText().toString();
-                if (city.equals("")) {
-                    GetCurrentWeatherData(City);
+                if (city.equals("")) { // nếu khi run app mà city là rỗng
+                    GetCurrentWeatherData(City);// thì nó sẽ gán mặc định biến city ="Hanoi"
                     GetAirAndPollen(Id_location);
-                }else {
+                }else { // nếu tồn tại giá trị r
                     City = city;
                     GetCurrentWeatherData(City);
                     if (city.toLowerCase().equals("hanoi")) {
@@ -70,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
         btnThayDoiNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // khi click vào button xem nhiều ngày này, thì nó sẽ lấy dl từ editText
+                // nghĩa là lấy dl từ city mà người dụng nhập vào editText và chuyển qua màn hình 2
                 String city = edtSearch.getText().toString();
                 Intent intent = new Intent(MainActivity.this, ThoiTietActivity.class);
+                // 'key' là 1 key: để khi chuyển sang màn hình 2, màn hình đó sẽ bắt cái 'key' để nhận giá trị
                 intent.putExtra("key", city);
                 startActivity(intent);
             }
@@ -79,34 +82,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GetCurrentWeatherData(String data) {
-        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+        //Volley cho phép cùng một lúc thưc hiện nhiều request trên các thread khác nhau với các mức độ ưu tiên (priority ) khác nhau
+        //Volley là một thư viện dùng để send và recieve response từ Server sử dụng giao thức HTTP
+        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);//requestQueue: thực thi các request(yêu cầu) mà mình gửi đi
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+data+"&units=metric&appid=4cfa017f7ae8871934251cb53b5f651b";
+        //StringRequest: Kết thừa từ Request, là class đại diện cho request trả về String.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
+                        try { // sử dụng try-catch để tránh các lỗi khi chạy chương trình mà khi compile không thể biết được(xử lý ngoại lệ)
+                            // api ban đầu là 1 jsonobject, nên khởi tạo Jsonobject
                             JSONObject jsonObject = new JSONObject(response);
-                            String ngay = jsonObject.getString("dt");
+                            // khởi tạo biến lấy 2 giá trị tagname(tên từ file json) là dt và name
+                            String ngay = jsonObject.getString("dt"); // dt là ngày tháng sẽ format lại sau
                             String name = jsonObject.getString("name");
+
                             txtThanhPho.setText("Tên thành phố: " + name);
+                            // custom dt
                             long l = Long.valueOf(ngay);
-                            Date date = new Date(l*1000L);
+                            Date date = new Date(l*1000L); // chuyển về dạng mini giây
+                            // format lại kiểu định dạng (thứ - ngày,tháng,năm - giờ,phút,giây)
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE, MM-dd-yyyy HH:mm" );
-                            String Ngay = simpleDateFormat.format(date);
+                            String Ngay = simpleDateFormat.format(date); // truyền vào giá trị format
+
                             txtNgayGioCapNhat.setText(Ngay);
+                            // trong tagname weather có JsonArray, nên ta khởi tạo jsonArray đc get từ jsonObject ngoài cùng
                             JSONArray jsonArray = jsonObject.getJSONArray("weather");
+                            // trong jsonarray có 1 jsonobject
                             JSONObject jsonObjectWeather = jsonArray.getJSONObject(0);
+                            // hứng các giá trị của từng tagname
                             String trangthai = jsonObjectWeather.getString("main");
                             String icon = jsonObjectWeather.getString("icon");
-                            Picasso.get().load("http://openweathermap.org/img/wn/"+icon+".png").into(imgTrangThai);
+                            // sử dụng thư viện PIcasso cho việc đọc dữ liệu hình ảnh
+                            Picasso.get().load("http://openweathermap.org/img/wn/"+icon+".png").into(imgTrangThai); // dổ dl ra imgTrangThai
                             txtTrangThai.setText(trangthai);
+
+                            // tagname Jsonobject (main)
                             JSONObject jsonObjectMain = jsonObject.getJSONObject("main");
+                            // hứng cá dữ liệu từ tag name con của main
                             String nhietdo = jsonObjectMain.getString("temp");
                             String doam = jsonObjectMain.getString("humidity");
 
+                            // vì nhiệt độ có thể trả về dạng double ( vd: 31.2, 30.5)
                             Double nd = Double.valueOf(nhietdo);
-                            String NhietDo = String.valueOf(nd.intValue());
+                            // đổi kiểu dữ liệu cho biến nhietdo về dạng chuỗi
+                            String NhietDo = String.valueOf(nd.intValue()); // gán về int r chuyển lại dạng String
                             txtNhietDo.setText(NhietDo+"°C");
                             txtDoAm.setText(doam+"%");
 
@@ -123,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                             txtQuocGia.setText("Quốc gia: "+quocgia);
 
                         } catch (JSONException e) {
+                            // nếu lỗi xảy ra sẽ xử lý tại đây
                             e.printStackTrace();
                         }
                     }
@@ -133,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-        requestQueue.add(stringRequest);
+                // để thức thi đc request trên, ta gọi lại requestQueue
+                requestQueue.add(stringRequest);
     }
 
     private void GetAirAndPollen(String id_location) {
